@@ -65,6 +65,9 @@ const getInitialData = async () => {
   }
 
   console.log("Data is ready");
+  app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+  });
 };
 
 getInitialData();
@@ -101,8 +104,4 @@ app.get("/authors", async (req, res) => {
       data: author,
     });
   }
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
 });
