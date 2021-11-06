@@ -78,16 +78,15 @@ app.get("/quotes", (req, res) => {
   let quotes;
   if (author !== undefined) {
     quotes = data.quotes.filter((q) => q.author == author);
-    
   } else if (tag !== undefined) {
     quotes = data.quotes.filter((q) => q.tags.includes(tag));
   } else {
-    quotes = data.quotes
+    quotes = data.quotes;
   }
 
   return res.send({
     data: quotes,
-    total: quotes.length
+    total: quotes.length,
   });
 });
 
@@ -96,10 +95,10 @@ app.get("/authors", async (req, res) => {
   if (name === undefined) {
     return res.send({
       data: data.authors,
-      total: data.authors.length
+      total: data.authors.length,
     });
   } else {
-    const author = data.authors.find((a) => a.name == name)[0];
+    const author = data.authors.find((a) => a.name == name);
     return res.send({
       data: author,
     });
